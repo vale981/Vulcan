@@ -2,23 +2,25 @@ import React from 'react';
 import { Components, withCurrentUser, AdminColumns } from 'meteor/vulcan:core';
 import { FormattedMessage } from 'meteor/vulcan:i18n';
 import Users from 'meteor/vulcan:users';
+import { withRouter } from 'react-router';
 
 import '../modules/columns.js';
 
-const AdminHome = ({ currentUser }) =>
-  <div className="admin-home page">
+const AdminHome = ({ currentUser, match }) => {
+  return <div className="admin-home page">
     <Components.ShowIf check={Users.isAdmin} document={currentUser} failureComponent={<p className="admin-home-message"><FormattedMessage id="app.noPermission" /></p>}>
-      <Components.Datatable 
-        collection={Users} 
-        columns={AdminColumns} 
+      <Components.Datatable
+        collection={Users}
+        columns={AdminColumns}
         options={{
-          fragmentName: 'UsersAdmin',
-          terms: {view: 'usersAdmin'},
-          limit: 20
+            fragmentName: 'UsersAdmin',
+            terms: {view: 'usersAdmin', query: match.params.id},
         }}
         showEdit={true}
+        query={match.params.id}
       />
     </Components.ShowIf>
   </div>;
+};
 
-export default withCurrentUser(AdminHome);
+export default withRouter(withCurrentUser(AdminHome));

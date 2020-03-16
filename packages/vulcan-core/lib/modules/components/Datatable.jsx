@@ -31,12 +31,12 @@ const getColumnName = column => (
 
 class Datatable extends PureComponent {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.updateQuery = this.updateQuery.bind(this);
     this.state = {
       value: '',
-      query: '',
+        query: props.query ? props.query : '',
       currentSort: {}
     };
   }

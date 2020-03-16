@@ -6,7 +6,7 @@ import AdminUsersCreated from '../components/users/columns/AdminUsersCreated.jsx
 
 addAdminColumn([
   {
-    name: 'name',
+    name: 'fullName',
     order: 1,
     component: AdminUsersName
   },

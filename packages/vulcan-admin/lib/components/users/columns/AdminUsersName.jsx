@@ -5,9 +5,7 @@ import { Components } from 'meteor/vulcan:core';
 const AdminUsersName = ({ document: user, flash }) => 
   <div>
 
-    <Components.Avatar user={user} link={false}/>
-
-    <span>{Users.getDisplayName(user)}</span>
+    <span>{user.fullName}</span>
 
     &nbsp;
 

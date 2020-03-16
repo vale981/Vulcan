@@ -9,6 +9,6 @@ addRoute({
 });
 addRoute({
   name: 'admin2',
-  path: '/admin/users',
+  path: '/admin/users/:id?',
   component: () => getDynamicComponent(import('../components/AdminHome.jsx')),
 });

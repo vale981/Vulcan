@@ -48,6 +48,7 @@ const schema = {
     type: String,
     optional: true,
     canRead: ['guests'],
+      searchable: true,
   },
   username: {
     type: String,
